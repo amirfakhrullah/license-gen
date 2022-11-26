@@ -21,7 +21,7 @@ func Select(licenses []licenses.TrimmedLicense) int {
 		Label:     "Which license do you want",
 		Items:     licenses,
 		Templates: templates,
-		Size:      13,
+		Size:      len(licenses),
 	}
 
 	i, _, promptErr := prompt.Run()
