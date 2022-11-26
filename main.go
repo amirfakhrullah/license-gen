@@ -10,6 +10,16 @@ import (
 )
 
 func main() {
+	isExist, fileErr := helpers.IsLicenseExist()
+	helpers.HandlePanic(fileErr)
+
+	if isExist {
+		toProceed := cli.ConfirmProceed()
+		if !toProceed {
+			return
+		}
+	}
+
 	lic := licenses.GetLicenseList()
 
 	i := cli.Select(lic)

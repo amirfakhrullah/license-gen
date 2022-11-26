@@ -47,3 +47,15 @@ func GetName() string {
 
 	return name
 }
+
+func ConfirmProceed() bool {
+	prompt := promptui.Select{
+		Label:     "LICENSE file found in your directory. If you proceed, this will replace the current license",
+		Items:     []string{"Proceed", "Cancel"},
+	}
+
+	i, _, promptErr := prompt.Run()
+	helpers.HandlePanic(promptErr)
+
+	return i == 0
+}
