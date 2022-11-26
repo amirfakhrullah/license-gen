@@ -28,7 +28,7 @@ license-gen
 - To clone:
 
 ```cmd
-git clone https://github.com/amirfakhrullah/license-gen
+git clone https://github.com/amirfakhrullah/license-gen@latest
 ```
 
 - To build
