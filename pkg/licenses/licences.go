@@ -74,11 +74,6 @@ func FetchFullLicense(key string) FullLicense {
 	return license
 }
 
-func GetAllLicenseNames() []string {
-	var licenseNames []string
-
-	for _, value := range cachedLicenses {
-		licenseNames = append(licenseNames, value.Name)
-	}
-	return licenseNames
+func GetLicenseList() []TrimmedLicense {
+	return cachedLicenses
 }
