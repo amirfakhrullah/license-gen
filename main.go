@@ -24,9 +24,14 @@ func main() {
 
 	i := cli.Select(lic)
 	name := cli.GetName()
+	year := cli.GetYear()
+
+	if len(year) == 0 {
+		year = helpers.GetYear()
+	}
 
 	licenses.FetchFullLicense(lic[i].Key)
-	licContent := licenses.Fill_License(name, helpers.GetYear())
+	licContent := licenses.Fill_License(name, year)
 
 	f, osErr := os.Create("LICENSE")
 	helpers.HandlePanic(osErr)
