@@ -2,7 +2,7 @@
 
 ## Description
 
-Open-source license generator written in Go. 
+Generate open-source license for your project from terminal. Written in Go.
 
 ## Quickstart
 
@@ -42,3 +42,7 @@ go run main.go
 ```cmd
 go build
 ```
+
+## License
+
+License under the [MIT License](./LICENSE)
