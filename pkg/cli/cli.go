@@ -2,6 +2,7 @@ package cli
 
 import (
 	"errors"
+
 	"github.com/amirfakhrullah/license-gen/pkg/helpers"
 	"github.com/amirfakhrullah/license-gen/pkg/licenses"
 	"github.com/manifoldco/promptui"
