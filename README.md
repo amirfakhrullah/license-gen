@@ -11,7 +11,7 @@ Open-source license generator written in Go.
 To install, run:
 
 ```cmd
-go install github.com/amirfakhrullah/license-gen
+go install github.com/amirfakhrullah/license-gen@latest
 ```
 
 ### Run Script
@@ -28,7 +28,7 @@ license-gen
 - To clone:
 
 ```cmd
-git clone https://github.com/amirfakhrullah/license-gen@latest
+git clone https://github.com/amirfakhrullah/license-gen
 ```
 
 - To build
