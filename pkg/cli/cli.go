@@ -1,6 +1,7 @@
 package cli
 
 import (
+	"errors"
 	"github.com/amirfakhrullah/license-gen/pkg/helpers"
 	"github.com/amirfakhrullah/license-gen/pkg/licenses"
 	"github.com/manifoldco/promptui"
@@ -28,8 +29,16 @@ func Select(licenses []licenses.TrimmedLicense) int {
 }
 
 func GetName() string {
+	validate := func(input string) error {
+		if len(input) == 0 {
+			return errors.New("value is required")
+		}
+		return nil
+	}
+
 	prompt := promptui.Prompt{
-		Label: "Your name",
+		Label:    "Your name",
+		Validate: validate,
 	}
 
 	name, err := prompt.Run()

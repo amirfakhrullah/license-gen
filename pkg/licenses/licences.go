@@ -2,9 +2,11 @@ package licenses
 
 import (
 	"encoding/json"
-	"github.com/amirfakhrullah/license-gen/pkg/helpers"
 	"io"
 	"net/http"
+	"strings"
+
+	"github.com/amirfakhrullah/license-gen/pkg/helpers"
 )
 
 type License struct {
@@ -37,6 +39,7 @@ type TrimmedLicense struct {
 }
 
 var cachedLicenses []TrimmedLicense
+var selectedLicense FullLicense
 var url = "https://api.github.com/licenses"
 
 func init() {
@@ -59,7 +62,7 @@ func init() {
 	}
 }
 
-func FetchFullLicense(key string) FullLicense {
+func FetchFullLicense(key string) {
 	resp, httpErr := http.Get(url + "/" + key)
 	helpers.HandlePanic(httpErr)
 
@@ -67,13 +70,17 @@ func FetchFullLicense(key string) FullLicense {
 	body, ioErr := io.ReadAll(resp.Body)
 	helpers.HandlePanic(ioErr)
 
-	var license FullLicense
-	unmarshalErr := json.Unmarshal(body, &license)
+	unmarshalErr := json.Unmarshal(body, &selectedLicense)
 	helpers.HandlePanic(unmarshalErr)
-
-	return license
 }
 
 func GetLicenseList() []TrimmedLicense {
 	return cachedLicenses
+}
+
+func Fill_License(name string, year string) string {
+	selectedLicense.Body = strings.ReplaceAll(selectedLicense.Body, "[fullname]", name)
+	selectedLicense.Body = strings.ReplaceAll(selectedLicense.Body, "[year]", year)
+
+	return selectedLicense.Body
 }
