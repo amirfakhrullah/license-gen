@@ -9,7 +9,7 @@ import (
 	"github.com/manifoldco/promptui"
 )
 
-func Select(licenses []licenses.TrimmedLicense) int {
+func Select(licenses *[]licenses.TrimmedLicense) int {
 	templates := &promptui.SelectTemplates{
 		Label:    "{{ . }}?",
 		Active:   "📌 {{ .Name | cyan }}",
@@ -19,9 +19,9 @@ func Select(licenses []licenses.TrimmedLicense) int {
 
 	prompt := promptui.Select{
 		Label:     "Which license do you want",
-		Items:     licenses,
+		Items:     *licenses,
 		Templates: templates,
-		Size:      len(licenses),
+		Size:      len(*licenses),
 	}
 
 	i, _, promptErr := prompt.Run()

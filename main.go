@@ -22,7 +22,7 @@ func main() {
 
 	lic := *licenses.GetLicenseList()
 
-	i := cli.Select(lic)
+	i := cli.Select(&lic)
 	name := cli.GetName()
 	year := cli.GetYear()
 
