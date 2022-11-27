@@ -9,7 +9,7 @@ import (
 	"github.com/manifoldco/promptui"
 )
 
-func Select(licenses []licenses.TrimmedLicense) int {
+func Select(licenses []licenses.License) int {
 	templates := &promptui.SelectTemplates{
 		Label:    "{{ . }}?",
 		Active:   "📌 {{ .Name | cyan }}",
