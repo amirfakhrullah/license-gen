@@ -25,7 +25,7 @@ func Select(licenses []licenses.TrimmedLicense) int {
 	}
 
 	i, _, promptErr := prompt.Run()
-	helpers.HandlePanic(promptErr)
+	helpers.HandlePanic(&promptErr)
 
 	return i
 }
@@ -44,7 +44,7 @@ func GetName() string {
 	}
 
 	name, err := prompt.Run()
-	helpers.HandlePanic(err)
+	helpers.HandlePanic(&err)
 
 	return name
 }
@@ -67,7 +67,7 @@ func GetYear() string {
 	}
 
 	year, err := prompt.Run()
-	helpers.HandlePanic(err)
+	helpers.HandlePanic(&err)
 
 	return year
 }
@@ -79,7 +79,7 @@ func ConfirmProceed() bool {
 	}
 
 	i, _, promptErr := prompt.Run()
-	helpers.HandlePanic(promptErr)
+	helpers.HandlePanic(&promptErr)
 
 	return i == 0
 }

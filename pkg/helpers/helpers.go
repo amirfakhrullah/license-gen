@@ -6,9 +6,9 @@ import (
 	"time"
 )
 
-func HandlePanic(e error) {
-	if e != nil {
-		panic(e)
+func HandlePanic(e *error) {
+	if *e != nil {
+		panic(*e)
 	}
 }
 

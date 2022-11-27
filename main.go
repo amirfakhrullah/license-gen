@@ -11,7 +11,7 @@ import (
 
 func main() {
 	isExist, fileErr := helpers.IsLicenseExist()
-	helpers.HandlePanic(fileErr)
+	helpers.HandlePanic(&fileErr)
 
 	if isExist {
 		toProceed := cli.ConfirmProceed()
@@ -20,7 +20,7 @@ func main() {
 		}
 	}
 
-	lic := licenses.GetLicenseList()
+	lic := *licenses.GetLicenseList()
 
 	i := cli.Select(lic)
 	name := cli.GetName()
@@ -34,10 +34,10 @@ func main() {
 	licContent := licenses.Fill_License(name, year)
 
 	f, osErr := os.Create("LICENSE")
-	helpers.HandlePanic(osErr)
+	helpers.HandlePanic(&osErr)
 
-	_, writeErr := f.WriteString(licContent)
-	helpers.HandlePanic(writeErr)
+	_, writeErr := f.WriteString(*licContent)
+	helpers.HandlePanic(&writeErr)
 
 	fmt.Printf("✅ Successfully added %v\n", lic[i].Name)
 }

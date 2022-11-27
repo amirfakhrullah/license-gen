@@ -44,15 +44,15 @@ var url = "https://api.github.com/licenses"
 
 func init() {
 	resp, httpErr := http.Get(url)
-	helpers.HandlePanic(httpErr)
+	helpers.HandlePanic(&httpErr)
 
 	defer resp.Body.Close()
 	body, ioErr := io.ReadAll(resp.Body)
-	helpers.HandlePanic(ioErr)
+	helpers.HandlePanic(&ioErr)
 
 	var licenses []License
 	unmarshalErr := json.Unmarshal(body, &licenses)
-	helpers.HandlePanic(unmarshalErr)
+	helpers.HandlePanic(&unmarshalErr)
 
 	for _, value := range licenses {
 		cachedLicenses = append(cachedLicenses, TrimmedLicense{
@@ -64,21 +64,21 @@ func init() {
 
 func FetchFullLicense(key string) {
 	resp, httpErr := http.Get(url + "/" + key)
-	helpers.HandlePanic(httpErr)
+	helpers.HandlePanic(&httpErr)
 
 	defer resp.Body.Close()
 	body, ioErr := io.ReadAll(resp.Body)
-	helpers.HandlePanic(ioErr)
+	helpers.HandlePanic(&ioErr)
 
 	unmarshalErr := json.Unmarshal(body, &selectedLicense)
-	helpers.HandlePanic(unmarshalErr)
+	helpers.HandlePanic(&unmarshalErr)
 }
 
-func GetLicenseList() []TrimmedLicense {
-	return cachedLicenses
+func GetLicenseList() *[]TrimmedLicense {
+	return &cachedLicenses
 }
 
-func Fill_License(name string, year string) string {
+func Fill_License(name string, year string) *string {
 	// replace name
 	selectedLicense.Body = strings.ReplaceAll(selectedLicense.Body, "[fullname]", name)
 	selectedLicense.Body = strings.ReplaceAll(selectedLicense.Body, "[name of copyright owner]", name)
@@ -89,5 +89,5 @@ func Fill_License(name string, year string) string {
 	selectedLicense.Body = strings.ReplaceAll(selectedLicense.Body, "[yyyy]", year)
 	selectedLicense.Body = strings.ReplaceAll(selectedLicense.Body, "<year>", year)
 
-	return selectedLicense.Body
+	return &selectedLicense.Body
 }
