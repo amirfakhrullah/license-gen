@@ -1,5 +1,7 @@
 # License-Gen
 
+[![DEMO-VIDEO](https://img.youtube.com/vi/Kua58jNqz0k/0.jpg)](https://www.youtube.com/watch?v=Kua58jNqz0k)
+
 ## Description
 
 Generate open-source license for your project from terminal. Written in Go.
