@@ -33,7 +33,7 @@ type FullLicense struct {
 	Featured       bool     `json:"featured"`
 }
 
-var cachedLicenses []License
+var licenseList []License
 var selectedLicense FullLicense
 var url = "https://api.github.com/licenses"
 
@@ -45,16 +45,8 @@ func init() {
 	body, ioErr := io.ReadAll(resp.Body)
 	helpers.HandlePanic(&ioErr)
 
-	// var licenses []License
-	unmarshalErr := json.Unmarshal(body, &cachedLicenses)
+	unmarshalErr := json.Unmarshal(body, &licenseList)
 	helpers.HandlePanic(&unmarshalErr)
-
-	// for _, value := range licenses {
-	// 	cachedLicenses = append(cachedLicenses, TrimmedLicense{
-	// 		Key:  value.Key,
-	// 		Name: value.Name,
-	// 	})
-	// }
 }
 
 func FetchFullLicense(key string) {
@@ -70,7 +62,7 @@ func FetchFullLicense(key string) {
 }
 
 func GetLicenseList() *[]License {
-	return &cachedLicenses
+	return &licenseList
 }
 
 func Fill_License(name string, year string) *string {
