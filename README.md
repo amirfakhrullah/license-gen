@@ -12,7 +12,7 @@ Generate open-source license for your project from terminal. Written in Go.
 
 ### Pre-requisite
 
-- Go installed and setup in your device
+- Go installed and set up in your device
 - [Installation guide](https://go.dev/doc/install)
 
 ### Install
