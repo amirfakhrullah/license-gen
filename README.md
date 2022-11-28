@@ -2,11 +2,6 @@
 
 [![DEMO-VIDEO](https://media.giphy.com/media/rWvsYwwMr0PrcgaUSO/giphy.gif)](https://www.youtube.com/watch?v=Kua58jNqz0k)
 
-<p align="center">
-<img style="width: 100%;" src="https://media.giphy.com/media/rWvsYwwMr0PrcgaUSO/giphy.gif
-"/>
-</p>
-
 ## Description
 
 Generate open-source license for your project from terminal. Written in Go.
