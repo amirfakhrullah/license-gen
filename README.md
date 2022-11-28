@@ -1,6 +1,6 @@
 <h1 align="center">License-Gen</h1>
 
-[![DEMO-VIDEO](https://media.giphy.com/media/rWvsYwwMr0PrcgaUSO/giphy.gif)](https://www.youtube.com/watch?v=Kua58jNqz0k)
+[![DEMO-VIDEO](https://media.giphy.com/media/ndWwvgncwa33fp6sYc/giphy.gif)](https://www.youtube.com/watch?v=Kua58jNqz0k)
 
 ## Description
 
