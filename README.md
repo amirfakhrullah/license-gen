@@ -10,6 +10,11 @@ Generate open-source license for your project from terminal. Written in Go.
 
 ## Quickstart
 
+### Pre-requisite
+
+- Go installed and setup in your device
+- [Installation guide](https://go.dev/doc/install)
+
 ### Install
 
 To install, run:
@@ -20,7 +25,7 @@ go install github.com/amirfakhrullah/license-gen@latest
 
 ### Run Script
 
-Then, run the script:
+Run the script below:
 
 ```cmd
 license-gen
@@ -35,13 +40,13 @@ license-gen
 git clone https://github.com/amirfakhrullah/license-gen.git
 ```
 
-- To Run
+- To Run:
 
 ```cmd
 go run main.go
 ```
 
-- To build
+- To build:
 
 ```cmd
 go build
