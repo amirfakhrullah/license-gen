@@ -1,12 +1,19 @@
-# License-Gen
+<h1 align="center">License-Gen</h1>
 
-[![DEMO-VIDEO](https://img.youtube.com/vi/Kua58jNqz0k/0.jpg)](https://www.youtube.com/watch?v=Kua58jNqz0k)
+![DEMO-GIF](https://media.giphy.com/media/ndWwvgncwa33fp6sYc/giphy.gif)
+
+- [Click here to view the full demo video](https://www.youtube.com/watch?v=Kua58jNqz0k)
 
 ## Description
 
-Generate open-source license for your project from terminal. Written in Go.
+Generate open-source license for your projects from terminal. Written in `Go`.
 
 ## Quickstart
+
+### Pre-requisite
+
+- `Go` installed and set up in your device
+- [`Go` Installation guide](https://go.dev/doc/install)
 
 ### Install
 
@@ -18,7 +25,7 @@ go install github.com/amirfakhrullah/license-gen@latest
 
 ### Run Script
 
-Then, run the script:
+Run the script below:
 
 ```cmd
 license-gen
@@ -33,13 +40,13 @@ license-gen
 git clone https://github.com/amirfakhrullah/license-gen.git
 ```
 
-- To Run
+- To Run:
 
 ```cmd
 go run main.go
 ```
 
-- To build
+- To build:
 
 ```cmd
 go build
