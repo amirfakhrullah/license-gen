@@ -6,14 +6,14 @@
 
 ## Description
 
-Generate open-source license for your project from terminal. Written in Go.
+Generate open-source license for your projects from terminal. Written in `Go`.
 
 ## Quickstart
 
 ### Pre-requisite
 
-- Go installed and set up in your device
-- [Installation guide](https://go.dev/doc/install)
+- `Go` installed and set up in your device
+- [`Go` Installation guide](https://go.dev/doc/install)
 
 ### Install
 
