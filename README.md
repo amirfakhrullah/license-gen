@@ -1,4 +1,4 @@
-<h1 align="center">License-Gen</h1>
+# License-Gen
 
 ![DEMO-GIF](https://media.giphy.com/media/ndWwvgncwa33fp6sYc/giphy.gif)
 
@@ -13,7 +13,7 @@ Generate open-source license for your projects from terminal. Written in `Go`.
 ### Pre-requisite
 
 - `Go` installed and set up in your device
-- [`Go` Installation guide](https://go.dev/doc/install)
+- If you haven't set up `Go`, refer: [Go Installation guide](https://go.dev/doc/install)
 
 ### Install
 
