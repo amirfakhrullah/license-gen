@@ -1,4 +1,4 @@
-<h1 align="center">License-Gen</h1>
+# License-Gen
 
 ![DEMO-GIF](https://media.giphy.com/media/ndWwvgncwa33fp6sYc/giphy.gif)
 
