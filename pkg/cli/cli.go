@@ -2,6 +2,7 @@ package cli
 
 import (
 	"errors"
+	"fmt"
 	"time"
 
 	"github.com/amirfakhrullah/license-gen/pkg/helpers"
@@ -33,7 +34,7 @@ func Select(licenses *[]licenses.TrimmedLicense) int {
 func GetName() string {
 	validate := func(input string) error {
 		if len(input) == 0 {
-			return errors.New("value is required")
+			return errors.New("name is required")
 		}
 		return nil
 	}
@@ -49,20 +50,20 @@ func GetName() string {
 	return name
 }
 
-func GetYear() string {
+func GetYear(defaultYear *string) string {
 	validate := func(input string) error {
 		if len(input) == 0 {
 			return nil
 		}
 		_, err := time.Parse("2006", input)
 		if err != nil {
-			return err
+			return errors.New("please use this format: yyyy")
 		}
 		return nil
 	}
 
 	prompt := promptui.Prompt{
-		Label:    "Year for the license (If skip, will default to this year)",
+		Label:    fmt.Sprintf("Year (default to %s)", *defaultYear),
 		Validate: validate,
 	}
 

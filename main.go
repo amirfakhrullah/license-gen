@@ -22,12 +22,14 @@ func main() {
 
 	lic := *licenses.GetLicenseList()
 
+	defaultYear := helpers.GetYear()
+
 	i := cli.Select(&lic)
 	name := cli.GetName()
-	year := cli.GetYear()
+	year := cli.GetYear(&defaultYear)
 
 	if len(year) == 0 {
-		year = helpers.GetYear()
+		year = defaultYear
 	}
 
 	licenses.FetchFullLicense(lic[i].Key)
