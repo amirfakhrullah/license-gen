@@ -12,12 +12,19 @@ func HandlePanic(e *error) {
 	}
 }
 
-func IsLicenseExist() (bool, error) {
-	matches, err := filepath.Glob("LICENSE")
-	if err != nil {
-		return false, err
+func IsLicenseExist() ([]string, error) {
+	licenseFileNameList := []string{"LICENSE", "LICENSE.*"}
+
+	var filesNeededToBeDeleted []string
+	for _, licFileName := range licenseFileNameList {
+		matches, err := filepath.Glob(licFileName)
+		if err != nil {
+			return nil, err
+		}
+		filesNeededToBeDeleted = append(filesNeededToBeDeleted, matches...)
+
 	}
-	return len(matches) > 0, nil
+	return filesNeededToBeDeleted, nil
 }
 
 func GetYear() string {
