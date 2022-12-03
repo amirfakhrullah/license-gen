@@ -7,6 +7,8 @@ import (
 	"time"
 )
 
+var fileName = "LICENSE"
+
 func HandlePanic(e *error) {
 	if *e != nil {
 		panic(*e)
@@ -31,9 +33,9 @@ func GetDefaultYear() string {
 	return strconv.Itoa(year)
 }
 
-func DeleteExistingLicenseFiles(skipName *string, existingFiles *[]string) error  {
+func DeleteExistingLicenseFiles(existingFiles *[]string) error  {
 	for _, lic := range *existingFiles {
-		if lic == *skipName {
+		if lic == fileName {
 			continue
 		}
 		err := os.Remove(lic)
@@ -44,8 +46,8 @@ func DeleteExistingLicenseFiles(skipName *string, existingFiles *[]string) error
 	return nil
 }
 
-func CreateAndWriteLicense(fileName *string, content *string) error {
-	f, osErr := os.Create(*fileName)
+func CreateAndWriteLicense(content *string) error {
+	f, osErr := os.Create(fileName)
 	if osErr != nil {
 		return osErr
 	}
