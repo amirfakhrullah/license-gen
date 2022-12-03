@@ -26,7 +26,7 @@ func IsLicenseExist() ([]string, error) {
 	return filesNeededToBeDeleted, nil
 }
 
-func GetYear() string {
+func GetDefaultYear() string {
 	year := time.Now().Year()
 	return strconv.Itoa(year)
 }

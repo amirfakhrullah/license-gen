@@ -62,7 +62,7 @@ func GetYear() string {
 		return nil
 	}
 
-	defaultYear := helpers.GetYear()
+	defaultYear := helpers.GetDefaultYear()
 
 	prompt := promptui.Prompt{
 		Label:    fmt.Sprintf("Year (default to %s)", defaultYear),
