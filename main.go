@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"os"
 
 	"github.com/amirfakhrullah/license-gen/pkg/cli"
 	"github.com/amirfakhrullah/license-gen/pkg/helpers"
@@ -24,33 +23,20 @@ func main() {
 	}
 
 	lic := *licenses.GetLicenseList()
-	defaultYear := helpers.GetYear()
 
 	i := cli.Select(&lic)
 	name := cli.GetName()
-	year := cli.GetYear(&defaultYear)
-
-	// if no year input is passed, use defaultYear as value
-	if len(year) == 0 {
-		year = defaultYear
-	}
+	year := cli.GetYear()
 
 	licenses.FetchFullLicense(lic[i].Key)
 	licContent := licenses.Fill_License(&name, &year)
 
 	// execute file deletion process for files in existedLicenseList with extensions (.txt, .md, ...)
-	for _, existedLic := range existedLicenseList {
-		if existedLic == fileName {
-			continue
-		}
-		osErr := os.Remove(existedLic)
-		helpers.HandlePanic(&osErr)
-	}
+	delErr := helpers.DeleteExistingLicenseFiles(&fileName, &existedLicenseList)
+	helpers.HandlePanic(&delErr)
 
-	f, osErr := os.Create(fileName)
-	helpers.HandlePanic(&osErr)
-
-	_, writeErr := f.WriteString(*licContent)
+	// file writes
+	writeErr := helpers.CreateAndWriteLicense(&fileName, licContent)
 	helpers.HandlePanic(&writeErr)
 
 	fmt.Printf("✅ Successfully added %v\n", lic[i].Name)

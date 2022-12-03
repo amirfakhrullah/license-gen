@@ -50,7 +50,7 @@ func GetName() string {
 	return name
 }
 
-func GetYear(defaultYear *string) string {
+func GetYear() string {
 	validate := func(input string) error {
 		if len(input) == 0 {
 			return nil
@@ -62,14 +62,20 @@ func GetYear(defaultYear *string) string {
 		return nil
 	}
 
+	defaultYear := helpers.GetYear()
+
 	prompt := promptui.Prompt{
-		Label:    fmt.Sprintf("Year (default to %s)", *defaultYear),
+		Label:    fmt.Sprintf("Year (default to %s)", defaultYear),
 		Validate: validate,
 	}
 
 	year, err := prompt.Run()
 	helpers.HandlePanic(&err)
 
+	// if no year input is passed, use defaultYear as value
+	if len(year) == 0 {
+		return defaultYear
+	}
 	return year
 }
 
