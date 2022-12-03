@@ -79,15 +79,15 @@ func GetLicenseList() *[]TrimmedLicense {
 }
 
 func Fill_License(name *string, year *string) *string {
-	// replace name
-	selectedLicense.Body = strings.ReplaceAll(selectedLicense.Body, "[fullname]", *name)
-	selectedLicense.Body = strings.ReplaceAll(selectedLicense.Body, "[name of copyright owner]", *name)
-	selectedLicense.Body = strings.ReplaceAll(selectedLicense.Body, "<name of author>", *name)
+	nameTagList := []string{"[fullname]", "[name of copyright owner]", "<name of author>"}
+	yearTagList := []string{"[year]", "[yyyy]", "<year>"}
 
-	// replace year
-	selectedLicense.Body = strings.ReplaceAll(selectedLicense.Body, "[year]", *year)
-	selectedLicense.Body = strings.ReplaceAll(selectedLicense.Body, "[yyyy]", *year)
-	selectedLicense.Body = strings.ReplaceAll(selectedLicense.Body, "<year>", *year)
+	for _, nameTag := range nameTagList {
+		selectedLicense.Body = strings.ReplaceAll(selectedLicense.Body, nameTag, *name)
+	}
+	for _, yearTag := range yearTagList {
+		selectedLicense.Body = strings.ReplaceAll(selectedLicense.Body, yearTag, *year)
+	}
 
 	return &selectedLicense.Body
 }
