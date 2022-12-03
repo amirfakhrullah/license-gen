@@ -8,15 +8,13 @@ import (
 	"github.com/amirfakhrullah/license-gen/pkg/licenses"
 )
 
-var fileName = "LICENSE"
-
 func main() {
 	existedLicenseList, fileErr := helpers.IsLicenseExist()
 	helpers.HandlePanic(&fileErr)
 
 	// get confirmation to proceed if there's existing LICENSE
 	if len(existedLicenseList) > 0 {
-		toProceed := cli.ConfirmProceed()
+		toProceed := cli.ConfirmProceed(&existedLicenseList)
 		if !toProceed {
 			return
 		}
@@ -32,11 +30,11 @@ func main() {
 	licContent := licenses.Fill_License(&name, &year)
 
 	// execute file deletion process for files in existedLicenseList with extensions (.txt, .md, ...)
-	delErr := helpers.DeleteExistingLicenseFiles(&fileName, &existedLicenseList)
+	delErr := helpers.DeleteExistingLicenseFiles(&existedLicenseList)
 	helpers.HandlePanic(&delErr)
 
 	// file writes
-	writeErr := helpers.CreateAndWriteLicense(&fileName, licContent)
+	writeErr := helpers.CreateAndWriteLicense(licContent)
 	helpers.HandlePanic(&writeErr)
 
 	fmt.Printf("✅ Successfully added %v\n", lic[i].Name)

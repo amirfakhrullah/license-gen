@@ -3,6 +3,7 @@ package cli
 import (
 	"errors"
 	"fmt"
+	"strings"
 	"time"
 
 	"github.com/amirfakhrullah/license-gen/pkg/helpers"
@@ -79,9 +80,10 @@ func GetYear() string {
 	return year
 }
 
-func ConfirmProceed() bool {
+func ConfirmProceed(files *[]string) bool {
+	fmt.Printf("⚠️  LICENSE file(s) found in your directory: %v\n", strings.Join(*files, ", "))
 	prompt := promptui.Select{
-		Label: "LICENSE file found in your directory. If you proceed, this will replace the current license",
+		Label: "Continuing this will erase/replace the file(s) above. Do you wish to proceed?",
 		Items: []string{"Proceed", "Cancel"},
 	}
 
