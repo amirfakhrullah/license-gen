@@ -33,7 +33,7 @@ func main() {
 	}
 
 	licenses.FetchFullLicense(lic[i].Key)
-	licContent := licenses.Fill_License(name, year)
+	licContent := licenses.Fill_License(&name, &year)
 
 	f, osErr := os.Create("LICENSE")
 	helpers.HandlePanic(&osErr)
