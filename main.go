@@ -38,7 +38,7 @@ func main() {
 	licenses.FetchFullLicense(lic[i].Key)
 	licContent := licenses.Fill_License(&name, &year)
 
-	// execute file deletion process for existedLicenseList with extensions (.txt, .md, ...)
+	// execute file deletion process for files in existedLicenseList with extensions (.txt, .md, ...)
 	for _, existedLic := range existedLicenseList {
 		if existedLic == fileName {
 			continue

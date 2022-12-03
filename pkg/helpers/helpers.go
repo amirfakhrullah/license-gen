@@ -13,10 +13,8 @@ func HandlePanic(e *error) {
 }
 
 func IsLicenseExist() ([]string, error) {
-	licenseFileNameList := []string{"LICENSE", "LICENSE.*"}
-
 	var filesNeededToBeDeleted []string
-	for _, licFileName := range licenseFileNameList {
+	for _, licFileName := range []string{"LICENSE", "LICENSE.*"} {
 		matches, err := filepath.Glob(licFileName)
 		if err != nil {
 			return nil, err
