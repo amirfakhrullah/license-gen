@@ -26,7 +26,7 @@ func main() {
 	name := cli.GetName()
 	year := cli.GetYear()
 
-	licenses.FetchFullLicense(lic[i].Key)
+	licenses.FetchFullLicense(&(lic[i].Key))
 	licContent := licenses.Fill_License(&name, &year)
 
 	// execute file deletion process for files in existedLicenseList with extensions (.txt, .md, ...)
@@ -36,6 +36,13 @@ func main() {
 	// file writes
 	writeErr := helpers.CreateAndWriteLicense(licContent)
 	helpers.HandlePanic(&writeErr)
+
+	// mention license at the bottom of README file if needed
+	toMention := cli.ToMentionInReadMe()
+	if toMention {
+		mentionErr := helpers.MentionLicenseInReadme(&(lic[i].Name))
+		helpers.HandlePanic(&mentionErr)
+	}
 
 	fmt.Printf("✅ Successfully added %v\n", lic[i].Name)
 }

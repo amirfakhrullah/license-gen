@@ -92,3 +92,15 @@ func ConfirmProceed(files *[]string) bool {
 
 	return i == 0
 }
+
+func ToMentionInReadMe() bool  {
+	prompt := promptui.Select{
+		Label: "Do you want the license to be mentioned at the bottom of your README?",
+		Items: []string{"Yes", "No"},
+	}
+
+	i, _, promptErr := prompt.Run()
+	helpers.HandlePanic(&promptErr)
+
+	return i == 0
+}
