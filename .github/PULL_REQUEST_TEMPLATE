@@ -1,0 +1,8 @@
+## RELEASE
+Select which type of release?
+- [ ] `release:major`
+- [ ] `release:minor`
+- [ ] `release:patch`
+- [ ] `norelease`
+
+## PR DESCRIPTION
