@@ -62,8 +62,8 @@ func init() {
 	}
 }
 
-func FetchFullLicense(key string) {
-	resp, httpErr := http.Get(url + "/" + key)
+func FetchFullLicense(key *string) {
+	resp, httpErr := http.Get(url + "/" + *key)
 	helpers.HandlePanic(&httpErr)
 
 	defer resp.Body.Close()

@@ -1,6 +1,7 @@
 package helpers
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -33,7 +34,7 @@ func GetDefaultYear() string {
 	return strconv.Itoa(year)
 }
 
-func DeleteExistingLicenseFiles(existingFiles *[]string) error  {
+func DeleteExistingLicenseFiles(existingFiles *[]string) error {
 	for _, lic := range *existingFiles {
 		if lic == fileName {
 			continue
@@ -47,15 +48,32 @@ func DeleteExistingLicenseFiles(existingFiles *[]string) error  {
 }
 
 func CreateAndWriteLicense(content *string) error {
-	f, osErr := os.Create(fileName)
-	if osErr != nil {
-		return osErr
+	f, createErr := os.Create(fileName)
+	if createErr != nil {
+		return createErr
 	}
+	defer f.Close()
 
 	_, writeErr := f.WriteString(*content)
 	if writeErr != nil {
 		return writeErr
 	}
 
+	return nil
+}
+
+func MentionLicenseInReadme(licName *string) error {
+	f, openErr := os.OpenFile("README.md", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	if openErr != nil {
+		return openErr
+	}
+	defer f.Close()
+
+	mention := fmt.Sprintf("\n## License\n\nLicense under the [%s](./LICENSE)\n", *licName)
+
+	_, writeErr := f.WriteString(mention)
+	if writeErr != nil {
+		return writeErr
+	}
 	return nil
 }
