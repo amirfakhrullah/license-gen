@@ -11,4 +11,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
-          bump_version_scheme: release:patch
+          bump_version_scheme: patch
