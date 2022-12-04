@@ -8,7 +8,7 @@
 
 Generate open-source license for your projects from terminal. Written in `Go`.
 
-## Quickstart
+## Quickstart 
 
 ### Prerequisites
 
