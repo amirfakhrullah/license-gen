@@ -1,6 +1,6 @@
 # License-Gen
 
-![DEMO-GIF](https://media.giphy.com/media/ndWwvgncwa33fp6sYc/giphy.gif)
+![DEMO-GIF](https://media.giphy.com/media/UQF9GfQfrM3EzzNQpj/giphy.gif)
 
 - [Click here to view the full demo video](https://www.youtube.com/watch?v=Kua58jNqz0k)
 
